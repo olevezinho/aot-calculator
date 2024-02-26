@@ -1,0 +1,11 @@
+@MyFirstAotWebApi_HostAddress = http://localhost:8123
+
+GET {{MyFirstAotWebApi_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{MyFirstAotWebApi_HostAddress}}/todos/1
+Accept: application/json
+
+###
