@@ -1,0 +1,11 @@
+@MyFirstAotWebApi_HostAddress = http://localhost:8123
+
+GET {{MyFirstAotWebApi_HostAddress}}/calculator/
+Accept: application/json
+
+### GET Environment
+
+GET {{MyFirstAotWebApi_HostAddress}}/calculator/add/1/1
+Accept: application/json
+
+### GET Add 1 + 1
