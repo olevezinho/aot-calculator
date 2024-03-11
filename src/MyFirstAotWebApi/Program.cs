@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateSlimBuilder(args);
+var port = builder.Configuration["ASPNETCORE_HTTP_PORT"];
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -14,7 +15,7 @@ builder.Services.AddSwaggerGen(c =>
         Contact = new Microsoft.OpenApi.Models.OpenApiContact
         {
             Name = "Filipe Costa",
-            Url = new Uri("http://localhost:8123")
+            Url = new Uri($"http://localhost:{port}")
         }
     });
 });
