@@ -25,8 +25,11 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, EnvironmentJsonSerializerContext.Default);
 });
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
+app.MapHealthChecks("/healthcheck");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseReDoc(c =>
