@@ -6,13 +6,14 @@ EXPOSE 80
 EXPOSE 443
 
 ## Copy stage
-COPY *.csproj .
-COPY *.config .
+COPY src/MyFirstAotWebApi/*.csproj .
+COPY src/MyFirstAotWebApi/*.config .
+#RUN ls -alrth
 RUN dotnet restore -r linux-${TARGETARCH}
 
 ## Copy and publish app and libs
 COPY . .
-RUN dotnet publish -r linux-${TARGETARCH} -o /app MyFirstAotWebApi.csproj
+RUN dotnet publish -r linux-${TARGETARCH} -o /app src/MyFirstAotWebApi/MyFirstAotWebApi.csproj
 RUN rm /app/*.dbg /app/*.Development.json
 
 ## Final stage
