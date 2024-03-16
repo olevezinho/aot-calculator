@@ -1,4 +1,9 @@
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using System.Text.Json.Serialization;
+
+const string logo = "https://akaratefelgueiras.pt/akaratefelgueiras/lcb-soft-devel.png";
+const string resume = "https://olevezinho.github.io/curriculum-vitae/";
 
 var builder = WebApplication.CreateSlimBuilder(args);
 var port = builder.Configuration["ASPNETCORE_HTTP_PORT"];
@@ -11,11 +16,23 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "Calculator Web API, " + builder.Environment.EnvironmentName,
         Version = "v1",
-        Description = "Web API example, created with .NET 8",
+        Description = "Web API example, created with .NET 8" + 
+                     $" exposed at port '{port}', on '{System.Runtime.InteropServices.RuntimeInformation.OSDescription}' OS!",
+
         Contact = new Microsoft.OpenApi.Models.OpenApiContact
         {
-            Name = "Filipe Costa",
-            Url = new Uri($"http://localhost:{port}")
+            Name = "Luis Costa Brochado",
+            Url = new Uri(resume)
+        },
+        Extensions = new Dictionary<string, IOpenApiExtension>
+        {
+            {
+                "x-logo", new OpenApiObject
+                {
+                    { "url", new OpenApiString(logo) },
+                    { "altText", new OpenApiString("Profile-Pic") }
+                }
+            }
         }
     });
 });
