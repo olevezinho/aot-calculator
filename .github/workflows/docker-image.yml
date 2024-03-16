@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Change directories
       run: cd src/MyFirstAotWebApi/
-    - name: Change directories
+    - name: Build image
       run: docker image build -t aot-calc:$(date +%s) .
      # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
